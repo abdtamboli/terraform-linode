@@ -1,6 +1,6 @@
 ---
 - name: Deploy app in new namespace
-  hosts: localhost
+  hosts: all
   tasks:
     - name: Create a k8s namespace
       vars:
