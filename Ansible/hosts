@@ -1,1 +1,2 @@
-[aws]
+[localhost]
+127.0.0.1 deploy_target=pi
