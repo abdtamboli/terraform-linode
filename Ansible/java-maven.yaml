@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: java-maven
+  labels:
+    app: java-maven
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  selector:
+    matchLabels:
+      app: java-maven
+  template:
+    metadata:
+      labels: 
+        app: java-maven
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+      - name: java-maven
+        image: iamabhi1997/my-apps:java-maven-2.0
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: java-maven-service
+spec:
+  selector:
+    app: java-maven
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 30015
