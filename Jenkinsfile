@@ -23,11 +23,8 @@ pipeline {
             steps{
                 script{
                     dir('Ansible'){
-                        sh 
-                        sh "kubectl get node"
-                        sh "kubectl create secret generic regcred \
-                           --from-file=.dockerconfigjson=/var/jenkins_home/.docker/config.json \
-                           --type=kubernetes.io/dockerconfigjson"
+                        sh "bash ./cmds.sh"
+                        
                     }
                 }
             }
