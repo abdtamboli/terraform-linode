@@ -1,9 +1,10 @@
 ---
 - name: Deploy app in new namespace
   hosts: localhost
-  gather_facts: false
   tasks:
     - name: Create a k8s namespace
+      vars:
+        ansible_python_interpreter: /usr/bin/python
       community.kubernetes.k8s:
         name: my-app
         api_version: v1
