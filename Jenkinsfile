@@ -23,6 +23,7 @@ pipeline {
             steps{
                 script{
                     dir('Ansible'){
+                        sh "kubectl get node"
                         sh "kubectl create secret generic regcred \
                            --from-file=.dockerconfigjson=/var/jenkins_home/.docker/config.json \
                            --type=kubernetes.io/dockerconfigjson"
