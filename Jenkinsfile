@@ -19,6 +19,17 @@ pipeline {
                 }
             }
         }
+        stage('Deploying app on cluster'){
+            steps{
+                script{
+                    dir('Ansible'){
+                        sh "kubectl create secret generic regcred \
+                           --from-file=.dockerconfigjson=/var/jenkins_home/.docker/config.json> \
+                           --type=kubernetes.io/dockerconfigjson"
+                    }
+                }
+            }
+        }
 
         
 
