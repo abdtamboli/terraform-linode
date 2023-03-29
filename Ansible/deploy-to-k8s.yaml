@@ -1,6 +1,7 @@
 ---
 - name: Deploy app in new namespace
   hosts: localhost
+  gather_facts: false
   tasks:
     - name: Create a k8s namespace
       community.kubernetes.k8s:
