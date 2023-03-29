@@ -3,6 +3,8 @@
   hosts: localhost
   tasks:
     - name: Create a k8s namespace
+      vars:
+        ansible_python_interpreter: /usr/bin/python3
       community.kubernetes.k8s:
         name: my-app
         api_version: v1
