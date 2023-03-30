@@ -14,5 +14,4 @@
       kubernetes.core.k8s:
         src: java-maven.yaml
         state: present
-        namespace: my-app
         kubeconfig: /var/jenkins_home/workspace/Terraform-linode/Terraform/lke-cluster-config.yaml
