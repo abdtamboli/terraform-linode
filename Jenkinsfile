@@ -25,6 +25,7 @@ pipeline {
                     dir('Ansible'){
                         sh "bash ./cmds.sh"
                         sh "ansible-playbook deploy-to-k8s.yaml "
+                        sh "kubectl get pod -n my-app"
                         
                     }
                 }
