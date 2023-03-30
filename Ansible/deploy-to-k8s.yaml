@@ -4,15 +4,13 @@
   gather_facts: false
   tasks:
     - name: Create a k8s namespace
-      vars:
-        ansible_python_interpreter: /usr/bin/python
-      community.kubernetes.k8s:
+      kubernetes.core.k8s:
         name: my-app
         api_version: v1
         kind: Namespace
         state: present
     - name: Deploy java-maven  app 
-      community.kubernetes.k8s:
+      kubernetes.core.k8s:
         src: java-maven.yaml
         state: present
-       
+        namespace: my-app
